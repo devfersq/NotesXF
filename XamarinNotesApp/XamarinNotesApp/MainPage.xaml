@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinNotesApp"
+             x:Class="XamarinNotesApp.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New"
+                     Clicked="NewToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <ListView x:Name="notesListView"
+                  IsPullToRefreshEnabled="True"
+                  ItemSelected="NotesListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Title}"
+                              Detail="{Binding Content}">
+                        <TextCell.ContextActions>
+                            <MenuItem IsDestructive="True"
+                                      Text="Delete"
+                                      Clicked="MenuItem_Delete"/>
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage>
